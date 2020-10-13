@@ -5,10 +5,12 @@ using Zenject;
 
 public class Move : MonoBehaviour
 {
-//	[Inject]
+	[Inject]
 	private IInputProvider inputProvider;
 
 	[SerializeField] Rigidbody _rigidbody;
+
+	public float jumpPower;
 
 	public void SetInputProvider(IInputProvider input)
 	{
@@ -16,7 +18,7 @@ public class Move : MonoBehaviour
 	}
 
 	private void Jump() {
-		_rigidbody.AddForce(new Vector3(0, 1, 0), ForceMode.Impulse);
+		_rigidbody.AddForce(new Vector3(0, jumpPower, 0), ForceMode.Impulse);
 	}
 
 	void Update()
